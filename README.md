@@ -30,8 +30,14 @@ Browse your mounted input directory, pick files or folders, choose a sample rate
 
 3. **Build & launch the service**
    ```bash
+   docker compose up -d
+   ```
+
+Or if you want to build the image, uncomment the build line and comment out the image line in the `docker-compose.yml` file and run:
+   ```bash
    docker compose up --build -d
    ```
+
 
 4. **Open the UI**
 Visit [http://your-machine-ip:8000](http://your-machine-ip:8000)
