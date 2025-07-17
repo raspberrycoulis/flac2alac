@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- Mobile viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FLAC → ALAC Converter</title>
+  <!-- Materialize CSS -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    rel="stylesheet"
+  />
+  <!-- Material Icons -->
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; }
+
+    /* Tighter collection-item spacing */
+    .collection .collection-item.avatar {
+      min-height: auto;
+      padding: 6px 12px;
+      padding-left: 12px;
+    }
+
+    /* Filename text */
+    .collection .collection-item.avatar label span:last-child {
+      font-size: 1rem;
+      line-height: 1.2;
+      color: #000 !important;
+    }
+
+    /* Inline folder/file icon */
+    .collection .collection-item.avatar i.circle {
+      position: static !important;
+      margin: 0 0.5rem;
+      font-size: 24px;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Remove extra label margin */
+    .collection .collection-item.avatar label {
+      margin: 0;
+    }
+
+    #progressSection { display: none; }
+    #log { white-space: pre-wrap; word-wrap: break-word; }
+
+    /* ===== Mobile adjustments ===== */
+    @media (max-width: 600px) {
+      nav .brand-logo { font-size: 1.2rem; }
+      .collection .collection-item.avatar {
+        padding: 10px 8px;
+      }
+      .collection .collection-item.avatar i.circle {
+        font-size: 32px;
+        width: 48px;
+        height: 48px;
+      }
+      .collection .collection-item.avatar label span:last-child {
+        font-size: 1.1rem;
+      }
+      .btn { width: 100%; font-size: 1.1rem; }
+      .progress { height: 8px; }
+      .determinate { height: 8px; }
+      .input-field .select-wrapper input.select-dropdown {
+        font-size: 1.1rem;
+        height: 44px;
+      }
+      .collapsible-header { font-size: 1.1rem; }
+    }
+
+    /* Footer padding tweak */
+    footer.page-footer {
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper teal">
+      <a href="#" class="brand-logo center">FLAC → ALAC</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="row" style="margin-top:1rem;">
+      <div class="col s12">
+        <a id="upBtn" class="btn-flat">
+          <i class="material-icons">arrow_upward</i>
+        </a>
+        <span id="currentPath">/</span>
+      </div>
+    </div>
+
+    <ul id="fileList" class="collection"></ul>
+
+    <div class="row">
+      <div class="input-field col s12 m6 l4">
+        <select id="sampleRate">
+          <option value="" selected>Original</option>
+          <option value="48000">48 kHz</option>
+          <option value="44100">44.1 kHz</option>
+        </select>
+        <label>Sample Rate</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <a id="convertBtn" class="btn waves-effect waves-light">
+          <i class="material-icons left">play_arrow</i>
+          Convert Selected
+        </a>
+      </div>
+    </div>
+
+    <div id="progressSection" class="card-panel grey lighten-4">
+      <h5>Progress</h5>
+      <div class="progress">
+        <div class="determinate" style="width: 0%;"></div>
+      </div>
+      <p id="eta">Estimated time remaining: --:--:--</p>
+      <p id="summary"></p>
+    </div>
+
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">info</i>Status
+        </div>
+        <div class="collapsible-body">
+          <pre id="log"></pre>
+        </div>
+      </li>
+    </ul>
+
+  </main>
+
+  <footer class="page-footer teal">
+    <div class="container center">
+      Version: Alpha 3.0<br/>
+      Made by <a href="https://github.com/raspberrycoulis" target="_blank" rel="noopener" class="white-text underline">Wesley Archer</a>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

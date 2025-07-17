@@ -1,0 +1,17 @@
+services:
+  converter:
+    build: ./converter
+    container_name: flac2alac
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: "${INPUT_DIR:-/path/to/flac_drive}"
+        target: /data/input
+      - type: bind
+        source: "${OUTPUT_DIR:-/path/to/alac_drive}"
+        target: /data/output
+    environment:
+      - INPUT_DIR=/data/input
+      - OUTPUT_DIR=/data/output
+    restart: unless-stopped

@@ -1,0 +1,17 @@
+# macOS Finder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS resource forks
+__MACOSX/
+._*
+
+# Icon files
+Icon?
+
+# dotenv files
+.env
+
+# Optional: ignore Docker Compose override files
+docker-compose.override.yml
