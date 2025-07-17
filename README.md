@@ -1,4 +1,4 @@
-# FLAC → ALAC Converter Web UI (Alpha 3.0)
+# FLAC → ALAC Converter Web UI
 
 A lightweight, Docker-Compose–powered FastAPI service with a Material-Design front-end for bulk-converting FLAC files to Apple Lossless (ALAC).  
 Browse your mounted input directory, pick files or folders, choose a sample rate, and hit **Convert Selected**—all from any browser, on any device.
